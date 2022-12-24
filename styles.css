@@ -39,8 +39,13 @@ body {
     background-color: darkgray;
 }
 
-.calc-display{
-    grid-row: span 2;
+#calc_display{
+    padding-right: 10px;
+    justify-content: right;
+    display: flex;
+    align-items: center;
+    min-height: 5vh;
+    font-size: 30px;
 }
 
 .calc-0 {
