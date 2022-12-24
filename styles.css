@@ -13,18 +13,17 @@ body {
 #calc_container {
     display: grid;
     border: 2px solid black;
-    grid-template-rows: repeat(5, auto);
     /* max-width: 600px !important;
     max-height: 600px !important;
     min-width: 600px !important;
     min-height: 600px !important; */
     width: 300px !important;
-    height: 300px !important;
+    height: 400px !important;
 }
 
 .calc-line{
     display: grid;
-    grid-template-columns: repeat(4,auto);
+    grid-template-columns: repeat(4,1fr);
 }
 
 .calc-button {
@@ -33,6 +32,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 100%;
 }
 
 .calc-button:hover{
