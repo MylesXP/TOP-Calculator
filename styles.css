@@ -37,6 +37,7 @@ body {
 
 .calc-button:hover{
     background-color: darkgray;
+    cursor: pointer;
 }
 
 #calc_display{
@@ -46,6 +47,11 @@ body {
     align-items: center;
     min-height: 5vh;
     font-size: 30px;
+    letter-spacing: -2px;
+}
+
+.opActive{
+    background-color: blue;
 }
 
 .calc-0 {
