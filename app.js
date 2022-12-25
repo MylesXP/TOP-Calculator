@@ -33,6 +33,8 @@ let divide = function (x,y) {
     x / y;
 };
 
+
+// Takes in an operator as an argument and matches it to one of the above functions, and calls the matched function
 let operate = function (x, op, y) {
     if (op == '+') {
     }
@@ -50,10 +52,8 @@ let percentage = function () {
     calcDisplay.textContent = ''
 }
 
-
-// Not clearing display or removing classes
-let clear = function () {
-    calcDisplay.value = '';
+let clearDisplay = function () {
+    calcDisplay.textContent = '';
     calcButton.forEach(x => x.classList.remove('opActive'));
 }
 
@@ -64,21 +64,12 @@ calcButton.forEach(x => {x.addEventListener('click', () => {
     if (x.classList.contains('cal-op'))  {
         calcDisplay.textContent = ''
         x.classList.add('opActive')
-    } else if (x.classList.contains('calc-clear')) {
-        calcDisplay.textContent = '';
-        calcButton.forEach(x => x.classList.remove('opActive'));
     } else if (x.classList.contains('calc-decimal')) {
         if (calcDisplay.textContent.includes('.')) {
             return;
         } 
         calcDisplay.textContent += '.'  
     } 
-    
-    
-    // else if (x.classList.contains('calc-posneg')) {
-    //     calcDisplay.textContent = (Number(calcDisplay.textContent) * -1).toString()
-    // }
-
 })})
 
 
