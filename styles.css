@@ -10,6 +10,7 @@ body {
     height: 100vh;
 }
 
+
 #calc_container {
     display: grid;
     border: 2px solid black;
@@ -45,9 +46,9 @@ body {
     justify-content: right;
     display: flex;
     align-items: center;
-    min-height: 5vh;
+    min-height: 4vh;
     font-size: 30px;
-    letter-spacing: -2px;
+    letter-spacing: 1px;
 }
 
 .opActive{
@@ -57,3 +58,4 @@ body {
 .calc-0 {
     grid-column: span 2;
 }
+
