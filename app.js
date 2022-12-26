@@ -37,13 +37,13 @@ let numButtons = function(x){
 let storeVar = function () {
     num1 = calcDisplay.textContent;
     calcDisplay.textContent = '';
-    console.log(num1)
 }
 
 let add = function (x,y) {
-    console.log(y)
-    console.log(Number(x) + Number(y))
-    calcDisplay.innerText = x + y
+    // console.log(y)
+    // console.log(Number(x) + Number(y))
+    let sum = Number(x) + Number(y)
+    return sum
 };
 
 let sub = function (x,y) {
@@ -84,18 +84,14 @@ let percentage = function () {
 // Takes in an operator as an argument and matches it to one of the above functions, and calls the matched function
 let operate = function () {
     num2 = calcDisplay.textContent
-    
-
-    // calcButton.filter(x => x.classList.contains('opActive').textContent == '+')
-
 
     let calcButtonClassContent = Array.from(calcButton).find(x => x.classList.contains('opActive'))
-    
     if (calcButtonClassContent.innerText == '+') {
-        add(num1, num2)
+        // calcDisplay.textContent = add(num1, num2);
+        // console.log(calcDisplay.textContent + ' hello')
+        calcDisplay.textContent = add(num1, num2);
     };
-    
-    calcDisplay.textContent = ''
+    // calcDisplay.textContent = ''
     calcButton.forEach(x => x.classList.remove('opActive'))
 }
 
