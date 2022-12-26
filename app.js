@@ -27,7 +27,9 @@ let numButtons = function(x){
         if(!calcDisplay.textContent.includes('.')){
             calcDisplay.textContent = calcDisplay.textContent.replace('0', '');
         } 
-    } 
+    } else if (calcDisplay.innerText == add(num1,num2)){
+        calcDisplay.textContent = ''
+    }
 
     calcDisplay.textContent += x
 }
@@ -111,13 +113,6 @@ calcButton.forEach(x => {x.addEventListener('click', () => {
         calcButton.forEach(x => x.classList.remove('opActive'))
         x.classList.add('opActive')
     }
-    
-    // else if (x.classList.contains('calc-decimal')) {
-    //     if (calcDisplay.textContent.includes('.')) {
-    //         return;
-    //     }
-    //     calcDisplay.textContent += x.textContent
-    // }
 })})
 
 
