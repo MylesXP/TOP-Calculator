@@ -120,9 +120,8 @@ let operate = function () {
 
 
 let clearDisplay = function () {
-    calcDisplay.textContent = 0;
+    calcDisplay.textContent = '';
     calcButton.forEach(x => x.classList.remove('opActive'));
-    calcDisplay.classList.remove('calc-display__result')
 }
 
 
