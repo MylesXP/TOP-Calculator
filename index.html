@@ -11,9 +11,7 @@
 
 <body>
     <div id="calc_container">
-        <div id="calc_display" contenteditable="false" data-placeholder="0">
-
-        </div>
+        <div id="calc_display">0</div>
         <div class="calc-line">
             <div class="calc-button calc-clear" onclick="clearDisplay()">
                 AC
@@ -52,7 +50,7 @@
             <div class="calc-button" onclick="numButtons(6)">
                 6
             </div>
-            <div class="calc-button cal-op calc-sub" onclick="numButtons(4)">
+            <div class="calc-button cal-op calc-sub">
                 -
             </div>
         </div>
@@ -74,7 +72,7 @@
             <div class="calc-button calc-0" onclick="numButtons(0)">
                 0
             </div>
-            <div class="calc-button calc-decimal">
+            <div class="calc-button calc-decimal" onclick="numButtons('.')">
                 .
             </div>
             <div class="calc-button calc-equals" onclick="equals()">
