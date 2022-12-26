@@ -14,6 +14,11 @@ let numButtons = function(x){
         }
     } 
     
+    
+    // else if (calcDisplay.classList.contains('calc-display__result')){
+    //     calcDisplay.classList.remove('calc-display__result')
+    // }
+    
     // else if (x == '.' && calcDisplay.textContent == ''){
     //     calcDisplay.textContent += "0"}  
         
@@ -27,10 +32,19 @@ let numButtons = function(x){
         if(!calcDisplay.textContent.includes('.')){
             calcDisplay.textContent = calcDisplay.textContent.replace('0', '');
         } 
-    } else if (calcDisplay.innerText == add(num1,num2)){
+    } else if (calcDisplay.classList.contains('calc-display__result')){
         calcDisplay.textContent = ''
+        calcDisplay.classList.remove('calc-display__result')
     }
 
+
+//     else if (calcDisplay.innerText == add(num1,num2)){
+//     calcDisplay.textContent = ''
+//     // calcDisplay.classList.remove('calc-display__result')
+// }
+
+    // calcDisplay.classList.contains('calc-display__result')
+    calcDisplay.classList.remove('calc-display__result')
     calcDisplay.textContent += x
 }
 
@@ -44,6 +58,7 @@ let storeVar = function () {
 let add = function (x,y) {
     // console.log(y)
     // console.log(Number(x) + Number(y))
+    calcDisplay.classList.add('calc-display__result')
     let sum = Number(x) + Number(y)
     return sum
 };
@@ -63,7 +78,10 @@ let divide = function (x,y) {
 let posneg = function () {
     if (calcDisplay.textContent === '') {
         return;
+    } else if (calcDisplay.classList.contains('calc-display__result')) {
+        calcDisplay.classList.remove('calc-display__result')
     }
+
     calcDisplay.textContent = (Number(calcDisplay.textContent) * -1).toString()
 }
 
@@ -92,8 +110,10 @@ let operate = function () {
         // calcDisplay.textContent = add(num1, num2);
         // console.log(calcDisplay.textContent + ' hello')
         calcDisplay.textContent = add(num1, num2);
+        
     };
     // calcDisplay.textContent = ''
+    
     calcButton.forEach(x => x.classList.remove('opActive'))
 }
 
