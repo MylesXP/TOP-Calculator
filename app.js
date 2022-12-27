@@ -13,14 +13,6 @@ let numButtons = function(x){
             return;
         }
     } 
-    
-    
-    // else if (calcDisplay.classList.contains('calc-display__result')){
-    //     calcDisplay.classList.remove('calc-display__result')
-    // }
-    
-    // else if (x == '.' && calcDisplay.textContent == ''){
-    //     calcDisplay.textContent += "0"}  
         
         else if (x == '.') {
         if (calcDisplay.textContent.includes('.')) {
@@ -37,29 +29,28 @@ let numButtons = function(x){
         calcDisplay.classList.remove('calc-display__result')
     }
 
-
-//     else if (calcDisplay.innerText == add(num1,num2)){
-//     calcDisplay.textContent = ''
-//     // calcDisplay.classList.remove('calc-display__result')
-// }
-
-    // calcDisplay.classList.contains('calc-display__result')
     calcDisplay.classList.remove('calc-display__result')
     calcDisplay.textContent += x
-}
+}                      
 
 // Declare functions for calc operations
 
-let storeVar = function () {
+let storeVar = function () {   
+    
+
+     if (num1 && num2) {
+        calcDisplay.textContent = add(num1,num2)
+    } 
+
     num1 = calcDisplay.textContent;
     calcDisplay.textContent = '';
 }
 
 let add = function (x,y) {
-    // console.log(y)
-    // console.log(Number(x) + Number(y))
     calcDisplay.classList.add('calc-display__result')
     let sum = Number(x) + Number(y)
+    num1 = ''
+    num2 = ''
     return sum
 };
 
@@ -89,18 +80,6 @@ let percentage = function () {
     calcDisplay.textContent = ''
 }
 
-// Logic for equal button
-// let equals = function () {
-//     num2 = calcDisplay.textContent
-//     calcDisplay.textContent = ''
-
-//     if
-
-//     console.log(num2)
-//     calcButton.forEach(x => x.classList.remove('opActive'))
-// }
-
-
 // Takes in an operator as an argument and matches it to one of the above functions, and calls the matched function
 let operate = function () {
     num2 = calcDisplay.textContent
@@ -111,7 +90,7 @@ let operate = function () {
         // console.log(calcDisplay.textContent + ' hello')
         calcDisplay.textContent = add(num1, num2);
         
-    };
+    }
     // calcDisplay.textContent = ''
     
     calcButton.forEach(x => x.classList.remove('opActive'))
@@ -120,6 +99,8 @@ let operate = function () {
 
 
 let clearDisplay = function () {
+    num1 = '';
+    num2 = '';
     calcDisplay.textContent = 0;
     calcButton.forEach(x => x.classList.remove('opActive'));
     calcDisplay.classList.remove('calc-display__result')
@@ -133,6 +114,11 @@ calcButton.forEach(x => {x.addEventListener('click', () => {
         // calcDisplay.textContent = ''
         calcButton.forEach(x => x.classList.remove('opActive'))
         x.classList.add('opActive')
+
+        if(num1 && calcDisplay.textContent && !calcDisplay.classList.contains('calc-display__result')){
+            num2 = calcDisplay.textContent
+            calcDisplay.textContent = add(num1, num2);
+        }
     }
 })})
 
