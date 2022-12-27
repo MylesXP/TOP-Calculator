@@ -3,18 +3,50 @@ let calcButton = document.querySelectorAll('.calc-button');
 let calcDisplay = document.getElementById('calc_display');
 let num1;
 let num2;
-// let calcDisplayCont = calcDisplay
+
+calcDisplay.textContent = '0';
+
+// Functions for math operations
+let add = function (x,y) {
+    return x + y;
+};
+
+let sub = function (x,y) {
+    return x - y
+};
+
+let multi = function (x,y) {
+    return x * y
+};
+
+let divide = function (x,y) {
+    return x / y
+};
 
 
-// Declare function for number button presses
+// Operate function that takes 2 nums and an operator and calls one of the functions above
+let operate = function (x, op, y) {
+    switch (op) {
+        case '+':
+            return add(x,y);
+        case '-':
+            return sub(x,y);
+        case '*':
+            return multi(x,y);
+        case '/':
+            return divide(x,y);
+        default:
+            console.log('ERROR')
+    }
+};
+
+// Functions that populate display with number button values
 let numButtons = function(x){
     if (x == 0) {
         if (calcDisplay.textContent == '0') {
             return;
         }
-    } 
-        
-        else if (x == '.') {
+    } else if (x == '.') {
         if (calcDisplay.textContent.includes('.')) {
             return;
         } else if (calcDisplay.textContent == '') {
@@ -31,73 +63,9 @@ let numButtons = function(x){
 
     calcDisplay.classList.remove('calc-display__result')
     calcDisplay.textContent += x
-}                      
-
-// Declare functions for calc operations
-
-let storeVar = function () {   
-    
-
-     if (num1 && num2) {
-        calcDisplay.textContent = add(num1,num2)
-    } 
-
-    num1 = calcDisplay.textContent;
-    calcDisplay.textContent = '';
 }
 
-let add = function (x,y) {
-    calcDisplay.classList.add('calc-display__result')
-    let sum = Number(x) + Number(y)
-    num1 = ''
-    num2 = ''
-    return sum
-};
-
-let sub = function (x,y) {
-    x - y;
-};
-
-let multi = function (x,y){
-    x * y;
-};
-
-let divide = function (x,y) {
-    x / y;
-};
-
-let posneg = function () {
-    if (calcDisplay.textContent === '') {
-        return;
-    } else if (calcDisplay.classList.contains('calc-display__result')) {
-        calcDisplay.classList.remove('calc-display__result')
-    }
-
-    calcDisplay.textContent = (Number(calcDisplay.textContent) * -1).toString()
-}
-
-let percentage = function () {
-    calcDisplay.textContent = ''
-}
-
-// Takes in an operator as an argument and matches it to one of the above functions, and calls the matched function
-let operate = function () {
-    num2 = calcDisplay.textContent
-
-    let calcButtonClassContent = Array.from(calcButton).find(x => x.classList.contains('opActive'))
-    if (calcButtonClassContent.innerText == '+') {
-        // calcDisplay.textContent = add(num1, num2);
-        // console.log(calcDisplay.textContent + ' hello')
-        calcDisplay.textContent = add(num1, num2);
-        
-    }
-    // calcDisplay.textContent = ''
-    
-    calcButton.forEach(x => x.classList.remove('opActive'))
-}
-
-
-
+// Function for clearing the screen when clear button is clicked
 let clearDisplay = function () {
     num1 = '';
     num2 = '';
@@ -105,22 +73,6 @@ let clearDisplay = function () {
     calcButton.forEach(x => x.classList.remove('opActive'));
     calcDisplay.classList.remove('calc-display__result')
 }
-
-
-// Iterate over array of buttons, adding event listener that determines what button is pressed
-calcButton.forEach(x => {x.addEventListener('click', () => {
-    
-     if (x.classList.contains('cal-op'))  {
-        // calcDisplay.textContent = ''
-        calcButton.forEach(x => x.classList.remove('opActive'))
-        x.classList.add('opActive')
-
-        if(num1 && calcDisplay.textContent && !calcDisplay.classList.contains('calc-display__result')){
-            num2 = calcDisplay.textContent
-            calcDisplay.textContent = add(num1, num2);
-        }
-    }
-})})
 
 
 
