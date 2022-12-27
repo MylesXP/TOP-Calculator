@@ -75,7 +75,7 @@
             <div class="calc-button calc-decimal" onclick="numButtons('.')">
                 .
             </div>
-            <div class="calc-button calc-equals" onclick="operate(Array.from(calcButton).find(x => x.classList.contains('op-active')).innerText)">
+            <div class="calc-button calc-equals" onclick="operate(Array.from(calcOpButtons).find(x => x.classList.contains('op-active')).innerText)">
                 =
             </div>
         </div>

@@ -32,7 +32,7 @@ calcOpButtons.forEach(x => x.addEventListener('click', () => {
         num1 = calcDisplay.textContent;
         calcDisplay.textContent = '';
     } 
-}))
+}));
 
 
 // Operate function that takes 2 nums and an operator and calls one of the functions above
@@ -40,13 +40,17 @@ let operate = function (op) {
     num2 = calcDisplay.textContent
     switch (op) {
         case '+':
-            add(Number(num1),Number(num1));
+            console.log(add(Number(num1),Number(num2)));
+            break;
         case '-':
-            sub(Number(num1),Number(num1));
+            console.log(sub(Number(num1),Number(num2)));
+            break;
         case '*':
-            multi(Number(num1),Number(num1));
+            console.log(multi(Number(num1),Number(num2)));
+            break;
         case '/':
-            divide(Number(num1),Number(num1));
+            console.log(divide(Number(num1),Number(num2)));
+            break;
         default:
             console.log('ERROR')
             console.log(Array.from(calcButton).find(x => x.classList.contains('op-active')).innerText)
@@ -99,7 +103,7 @@ calcOpButtons.forEach(x => x.addEventListener('click', () => {
         calcButton.forEach(x => x.classList.remove('op-active'))
         x.classList.add('op-active')
     }
-}))
+}));
 
 
 
