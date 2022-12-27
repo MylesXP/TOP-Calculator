@@ -22,7 +22,7 @@
             <div class="calc-button calc-percent">
                 %
             </div>
-            <div class="calc-button cal-op cal-divide" onclick="divide()">
+            <div class="calc-button calc-op cal-divide" onclick="divide()">
                 /
             </div>
         </div>
@@ -36,7 +36,7 @@
             <div class="calc-button" onclick="numButtons(9)">
                 9
             </div>
-            <div class="calc-button cal-op calc-multi" onclick="multi()">
+            <div class="calc-button calc-op calc-multi" onclick="multi()">
                 *
             </div>
         </div>
@@ -50,7 +50,7 @@
             <div class="calc-button" onclick="numButtons(6)">
                 6
             </div>
-            <div class="calc-button cal-op calc-sub">
+            <div class="calc-button calc-op calc-sub">
                 -
             </div>
         </div>
@@ -64,7 +64,7 @@
             <div class="calc-button" onclick="numButtons(3)">
                 3
             </div>
-            <div class="calc-button cal-op calc-add">
+            <div class="calc-button calc-op calc-add">
                 +
             </div>
         </div>
@@ -75,7 +75,7 @@
             <div class="calc-button calc-decimal" onclick="numButtons('.')">
                 .
             </div>
-            <div class="calc-button calc-equals">
+            <div class="calc-button calc-equals" onclick="operate(Array.from(calcButton).find(x => x.classList.contains('op-active')).innerText)">
                 =
             </div>
         </div>
