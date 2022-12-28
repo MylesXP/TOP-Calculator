@@ -7,23 +7,32 @@ let num2;
 
 calcDisplay.textContent = '0';
 
-
 // Functions for math operations
 let add = function (x,y) {
-    return x + y;
+    return calcDisplay.textContent = (x + y);
 };
 
 let sub = function (x,y) {
-    return x - y
+    return calcDisplay.textContent = (x - y);
 };
 
 let multi = function (x,y) {
-    return x * y
+    return calcDisplay.textContent = (x * y);
 };
 
 let divide = function (x,y) {
-    return x / y
+    return calcDisplay.textContent = (x / y);
 };
+
+// Positive Negative Button Logic
+let posneg = function () {
+    if (calcDisplay.textContent === '') {
+        return;
+    } else if (calcDisplay.classList.contains('calc-display__result')) {
+        calcDisplay.classList.remove('calc-display__result')
+    }
+    calcDisplay.textContent = (Number(calcDisplay.textContent) * -1).toString()
+}
 
 
 // Stores the first number
@@ -31,31 +40,71 @@ calcOpButtons.forEach(x => x.addEventListener('click', () => {
     if (!num1) {
         num1 = calcDisplay.textContent;
         calcDisplay.textContent = '';
-    } 
+    }
+
+    if (num1 && calcDisplay.textContent ) {
+        num2 = calcDisplay.textContent
+        // num1 = add(Number(num1), Number(num2));
+        switch (Array.from(calcOpButtons).find(x => x.classList.contains('op-active')).innerText){
+            case '+':
+                num1 = add(Number(num1),Number(num2));
+                calcDisplay.textContent = num1;
+                break;
+            case '-':
+                num1 = sub(Number(num1),Number(num2));  
+                calcDisplay.textContent = num1;
+                break;
+            case '*':
+                num1 = multi(Number(num1),Number(num2));
+                calcDisplay.textContent = num1;
+                break;
+            case '/':
+                num1 = divide(Number(num1),Number(num2));
+                calcDisplay.textContent = num1;
+                break;
+            default:
+                calcDisplay.textContent = 'ERROR'
+        };
+        num2 = '';
+        calcDisplay.classList.add('calc-display__result');
+        calcButton.forEach(x => x.classList.remove('op-active'));
+    }
+    
+    if (x.classList.contains('calc-op'))  {
+        calcButton.forEach(x => x.classList.remove('op-active'))
+        x.classList.add('op-active')
+    }
 }));
 
 
-// Operate function that takes 2 nums and an operator and calls one of the functions above
+// Operate function that takes an operator and calls one of the functions above on num1 and num2
 let operate = function (op) {
     num2 = calcDisplay.textContent
     switch (op) {
         case '+':
-            console.log(add(Number(num1),Number(num2)));
+            add(Number(num1),Number(num2));
+            num1 = ''
+            num2 = ''
             break;
         case '-':
-            console.log(sub(Number(num1),Number(num2)));
+            sub(Number(num1),Number(num2));
+            num1 = ''
+            num2 = ''   
             break;
         case '*':
-            console.log(multi(Number(num1),Number(num2)));
+            multi(Number(num1),Number(num2));
+            num1 = ''
+            num2 = ''
             break;
         case '/':
-            console.log(divide(Number(num1),Number(num2)));
+            divide(Number(num1),Number(num2));
+            num1 = ''
+            num2 = ''
             break;
         default:
-            console.log('ERROR')
-            console.log(Array.from(calcButton).find(x => x.classList.contains('op-active')).innerText)
-            console.log(typeof Array.from(calcButton).find(x => x.classList.contains('op-active')).innerText)
+            calcDisplay.textContent = 'ERROR'
     };
+    calcDisplay.classList.add('calc-display__result');
     calcButton.forEach(x => x.classList.remove('op-active'));
 };
 
@@ -79,7 +128,7 @@ let numButtons = function(x){
     } else if (calcDisplay.classList.contains('calc-display__result')){
         calcDisplay.textContent = ''
         calcDisplay.classList.remove('calc-display__result')
-    }
+    };
 
     calcDisplay.classList.remove('calc-display__result')
     calcDisplay.textContent += x
@@ -90,20 +139,23 @@ let numButtons = function(x){
 let clearDisplay = function () {
     num1 = '';
     num2 = '';
-    calcDisplay.textContent = 0;
+    calcDisplay.textContent = '0';
     calcButton.forEach(x => x.classList.remove('op-active'));
     calcDisplay.classList.remove('calc-display__result')
 };
 
+// Dont display more than 9 digits on display, convert to scientific notation if input or result exceeds 9 numbers
+
+
+
 
 // Logic for adding or removing active operator (op-active) class to operator buttons when clicked
-calcOpButtons.forEach(x => x.addEventListener('click', () => {
-    if (x.classList.contains('calc-op'))  {
-        // calcDisplay.textContent = ''
-        calcButton.forEach(x => x.classList.remove('op-active'))
-        x.classList.add('op-active')
-    }
-}));
+// calcOpButtons.forEach(x => x.addEventListener('click', () => {
+//     if (x.classList.contains('calc-op'))  {
+//         calcButton.forEach(x => x.classList.remove('op-active'))
+//         x.classList.add('op-active')
+//     }
+// }));
 
 
 
