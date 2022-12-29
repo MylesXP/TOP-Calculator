@@ -49,7 +49,6 @@ calcOpButtons.forEach(x => x.addEventListener('click', () => {
 
     if (num1 && calcDisplay.textContent && !calcDisplay.classList.contains('calc-display__result')) {
         num2 = calcDisplay.textContent
-        // num1 = add(Number(num1), Number(num2));
         switch (Array.from(calcOpButtons).find(x => x.classList.contains('op-active')).innerText){
             case '+':
                 num1 = add(Number(num1),Number(num2));
@@ -124,11 +123,12 @@ let numButtons = function(x){
 
     if (calcDisplay.textContent.length >= 12) {
         return;
-    }
-
+    } 
     if (x == 0) {
-        if (calcDisplay.textContent == '0') {
+        if (calcDisplay.textContent == '0' && !calcDisplay.classList.contains('calc-display__result')) {
             return;
+        } else if (calcDisplay.classList.contains('calc-display__result')) {
+            calcDisplay.textContent = x.textContent
         }
     } else if (x == '.') {
         if (calcDisplay.textContent.includes('.')) {
@@ -145,7 +145,6 @@ let numButtons = function(x){
         calcDisplay.classList.remove('calc-display__result')
     };
     
-
     calcDisplay.classList.remove('calc-display__result')
     calcDisplay.textContent += x
 
