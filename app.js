@@ -9,19 +9,19 @@ calcDisplay.textContent = '0';
 
 // Functions for math operations
 let add = function (x,y) {
-    return calcDisplay.textContent = (x + y);
+    return calcDisplay.textContent = (x + y).toFixed(2);
 };
 
 let sub = function (x,y) {
-    return calcDisplay.textContent = (x - y);
+    return calcDisplay.textContent = (x - y).toFixed(2);
 };
 
 let multi = function (x,y) {
-    return calcDisplay.textContent = (x * y);
+    return calcDisplay.textContent = (x * y).toFixed(2);
 };
 
 let divide = function (x,y) {
-    return calcDisplay.textContent = (x / y);
+    return calcDisplay.textContent = (x / y).toFixed(2);
 };
 
 // Positive Negative Button Logic
@@ -82,6 +82,9 @@ calcOpButtons.forEach(x => x.addEventListener('click', () => {
 // Operate function that takes an operator and calls one of the functions above on num1 and num2
 let operate = function (op) {
     num2 = calcDisplay.textContent
+    if(calcDisplay.classList.contains('calc-display__result')){
+        return;
+    };
     switch (op) {
         case '+':
             add(Number(num1),Number(num2));
@@ -113,6 +116,11 @@ let operate = function (op) {
 
 // Functions that populate display with number button values
 let numButtons = function(x){
+
+    if (calcDisplay.textContent.length >= 12) {
+        return;
+    }
+
     if (x == 0) {
         if (calcDisplay.textContent == '0') {
             return;
@@ -131,14 +139,12 @@ let numButtons = function(x){
         calcDisplay.textContent = ''
         calcDisplay.classList.remove('calc-display__result')
     };
-
-
-    if (calcDisplay.innerText.length > 5) {
-        calcDisplay.textContent = Number(calcDisplay.textContent).toFixed(2)
-    }
+    
 
     calcDisplay.classList.remove('calc-display__result')
     calcDisplay.textContent += x
+
+    
 };
 
 
@@ -152,9 +158,3 @@ let clearDisplay = function () {
 };
 
 // Dont display more than 9 digits on display, convert to scientific notation if input or result exceeds 9 numbers
-
-if (calcDisplay.innerText.length > 9) {
-    console.log('hello')
-}
-
-
