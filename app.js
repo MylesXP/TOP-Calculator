@@ -9,18 +9,23 @@ calcDisplay.textContent = '0';
 
 // Functions for math operations
 let add = function (x,y) {
+    if (x % 1 == 0 && y % 1 == 0) return calcDisplay.textContent = (x + y);
     return calcDisplay.textContent = (x + y).toFixed(2);
 };
 
 let sub = function (x,y) {
+    if (x % 1 == 0 && y % 1 == 0) return calcDisplay.textContent = (x - y);
     return calcDisplay.textContent = (x - y).toFixed(2);
 };
 
 let multi = function (x,y) {
+    if (x % 1 == 0 && y % 1 == 0) return calcDisplay.textContent = (x * y);
     return calcDisplay.textContent = (x * y).toFixed(2);
 };
 
 let divide = function (x,y) {
+    let quotient = x / y;
+    if (quotient % 1 == 0) return calcDisplay.textContent = (x / y);
     return calcDisplay.textContent = (x / y).toFixed(2);
 };
 
