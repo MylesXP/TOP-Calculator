@@ -88,6 +88,9 @@ let operate = function (op) {
     num2 = calcDisplay.textContent
     if(calcDisplay.classList.contains('calc-display__result')){
         return;
+    } else if (num1 && calcDisplay.textContent == '') {
+        alert('ERROR: Enter All Operands Before Hitting Equals');
+        return;
     };
     switch (op) {
         case '+':
