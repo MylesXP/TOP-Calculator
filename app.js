@@ -42,7 +42,7 @@ calcOpButtons.forEach(x => x.addEventListener('click', () => {
         calcDisplay.textContent = '';
     }
 
-    if (num1 && calcDisplay.textContent ) {
+    if (num1 && calcDisplay.textContent && !calcDisplay.classList.contains('calc-display__result')) {
         num2 = calcDisplay.textContent
         // num1 = add(Number(num1), Number(num2));
         switch (Array.from(calcOpButtons).find(x => x.classList.contains('op-active')).innerText){
@@ -74,6 +74,8 @@ calcOpButtons.forEach(x => x.addEventListener('click', () => {
         calcButton.forEach(x => x.classList.remove('op-active'))
         x.classList.add('op-active')
     }
+
+    
 }));
 
 
@@ -130,6 +132,11 @@ let numButtons = function(x){
         calcDisplay.classList.remove('calc-display__result')
     };
 
+
+    if (calcDisplay.innerText.length > 5) {
+        calcDisplay.textContent = Number(calcDisplay.textContent).toFixed(2)
+    }
+
     calcDisplay.classList.remove('calc-display__result')
     calcDisplay.textContent += x
 };
@@ -146,16 +153,8 @@ let clearDisplay = function () {
 
 // Dont display more than 9 digits on display, convert to scientific notation if input or result exceeds 9 numbers
 
-
-
-
-// Logic for adding or removing active operator (op-active) class to operator buttons when clicked
-// calcOpButtons.forEach(x => x.addEventListener('click', () => {
-//     if (x.classList.contains('calc-op'))  {
-//         calcButton.forEach(x => x.classList.remove('op-active'))
-//         x.classList.add('op-active')
-//     }
-// }));
-
+if (calcDisplay.innerText.length > 9) {
+    console.log('hello')
+}
 
 
