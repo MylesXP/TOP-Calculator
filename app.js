@@ -63,6 +63,10 @@ calcOpButtons.forEach(x => x.addEventListener('click', () => {
                 calcDisplay.textContent = num1;
                 break;
             case '/':
+                if (num1 && num2 == 0){ 
+                    alert("Dividing by 0?!? What are you doing? DON'T DESTROY THE WORLD!")
+                    return;
+                }
                 num1 = divide(Number(num1),Number(num2));
                 calcDisplay.textContent = num1;
                 break;
@@ -78,8 +82,6 @@ calcOpButtons.forEach(x => x.addEventListener('click', () => {
         calcButton.forEach(x => x.classList.remove('op-active'))
         x.classList.add('op-active')
     }
-
-    
 }));
 
 
@@ -109,6 +111,10 @@ let operate = function (op) {
             num2 = ''
             break;
         case '/':
+            if (num1 && num2 == 0){ 
+                alert("Dividing by 0?!? What are you doing? DON'T DESTROY THE WORLD!")
+                return;
+            }
             divide(Number(num1),Number(num2));
             num1 = ''
             num2 = ''
@@ -124,7 +130,9 @@ let operate = function (op) {
 // Functions that populate display with number button values
 let numButtons = function(x){
 
-    if (calcDisplay.textContent.length >= 12) {
+    if (calcDisplay.textContent.length >= 16) {
+        // calcDisplay.textContent = '';
+        // calcDisplay.textContent = Number(calcDisplay.textContent).toExponential();
         return;
     } 
     if (x == 0) {
