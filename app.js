@@ -29,6 +29,13 @@ let divide = function (x,y) {
     return calcDisplay.textContent = (x / y).toFixed(2);
 };
 
+// Percentage Button Logic
+let percentage = function () {
+    if (calcDisplay.textContent == '0') return;
+    calcDisplay.classList.add('calc-display__result');
+    calcDisplay.textContent = calcDisplay.textContent * 0.01
+}
+
 // Positive Negative Button Logic
 let posneg = function () {
     if (calcDisplay.textContent === '') {
@@ -38,6 +45,8 @@ let posneg = function () {
     }
     calcDisplay.textContent = (Number(calcDisplay.textContent) * -1).toString()
 }
+
+
 
 
 // Stores the first number
@@ -130,10 +139,9 @@ let operate = function (op) {
 // Functions that populate display with number button values
 let numButtons = function(x){
 
-    if (calcDisplay.textContent.length >= 16) {
-        // calcDisplay.textContent = '';
-        // calcDisplay.textContent = Number(calcDisplay.textContent).toExponential();
-        return;
+    if (calcDisplay.textContent.length >= 10) {
+        calcDisplay.textContent = Number(calcDisplay.textContent).toExponential();
+        // return;
     } 
     if (x == 0) {
         if (calcDisplay.textContent == '0' && !calcDisplay.classList.contains('calc-display__result')) {
