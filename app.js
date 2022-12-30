@@ -31,9 +31,16 @@ let divide = function (x,y) {
 
 // Percentage Button Logic
 let percentage = function () {
-    if (calcDisplay.textContent == '0') return;
-    calcDisplay.classList.add('calc-display__result');
+    if (calcDisplay.textContent == '0') {
+        return;
+    }
+    else if (calcDisplay.classList.contains('calc-display__result')){
+        calcDisplay.textContent = calcDisplay.textContent * 0.01
+        calcDisplay.classList.remove('calc-display__result');
+        return;
+    }
     calcDisplay.textContent = calcDisplay.textContent * 0.01
+    calcDisplay.classList.add('calc-display__result');
 }
 
 // Positive Negative Button Logic
