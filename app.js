@@ -150,7 +150,9 @@ let numButtons = function(x){
             calcDisplay.textContent = x.textContent
         }
     } else if (x == '.') {
-        if (calcDisplay.textContent.includes('.')) {
+        if (calcDisplay.classList.contains('calc-display__result')) {
+            calcDisplay.textContent = "0"
+        } else if (calcDisplay.textContent.includes('.')) {
             return;
         } else if (calcDisplay.textContent == '') {
             calcDisplay.textContent += "0"
