@@ -12,7 +12,7 @@
 <body>
     <video id="background-video" autoplay loop muted poster="bg_vid/raindrops.mp4">
         <source src="bg_vid/raindrops.mp4" type="video/mp4">
-        </video>
+    </video>
     <div id="calc_container">
         <div id="calc_display"></div>
         <div class="calc-line">
@@ -78,7 +78,8 @@
             <div class="calc-button calc-decimal" onclick="numButtons('.')">
                 .
             </div>
-            <div class="calc-button calc-equals" onclick="operate(Array.from(calcOpButtons).find(x => x.classList.contains('op-active')).innerText)">
+            <div class="calc-button calc-equals"
+                onclick="operate(Array.from(calcOpButtons).find(x => x.classList.contains('op-active')).innerText)">
                 =
             </div>
         </div>
