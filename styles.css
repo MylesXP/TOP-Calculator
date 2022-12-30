@@ -16,6 +16,7 @@ body {
     background-color: rgb(231, 220, 203);
     grid-gap: 2px;
     border: 5px solid rgb(175, 134, 79);
+    border-radius: 5px;
     /* max-width: 600px !important;
     max-height: 600px !important;
     min-width: 600px !important;
@@ -66,3 +67,23 @@ body {
 .calc-display__result {
     color: green;
 }
+
+@media (max-width: 750px) {
+    #background-video { display: none; }
+    body {
+      background: url("bg_vid/raindrops.mp4") no-repeat;
+      background-size: cover;
+    }
+}
+
+#background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
